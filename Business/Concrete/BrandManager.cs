@@ -14,7 +14,7 @@ namespace Business.Concrete
         IBrandDal _brandDal;
         public BrandManager(IBrandDal brandDal)
         {
-            brandDal = _brandDal;
+            _brandDal = brandDal;
         }
         public IResult Add(Brand brand)
         {

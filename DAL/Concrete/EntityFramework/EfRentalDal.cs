@@ -16,21 +16,21 @@ namespace DAL.Concrete.EntityFramework
         {
             using (RentCarContext context = new RentCarContext())
             {
-                var result = from r in filter == null ? context.Rentals : context.Rentals.Where(filter)
+                var result = from ren in filter==null? context.Rentals : context.Rentals.Where(filter)
                              join ca in context.Cars
-                             on r.CarId equals ca.Id
-                             join b in context.Brands
-                             on ca.BrandId equals b.Id
-                             join cus in context.Customers
-                             on r.CustomerId equals cus.Id
+                             on ren.CarId equals ca.Id
+                             join br in context.Brands
+                             on ren.Id equals br.Id
+                             join cu in context.Customers
+                             on ren.CustomerId equals cu.Id
                              select new RentalDetailDto
                              {
-                                 BrandName = b.BrandName,
+                                 Id = ren.Id,
                                  CarId = ca.Id,
-                                 Id = r.Id,
-                                 CompanyName = cus.CompanyName,
-                                 RentDate = r.RentDate,
-                                 ReturnDate = r.ReturnDate
+                                 BrandName = br.BrandName,
+                                 CompanyName = cu.CompanyName,
+                                 RentDate = ren.RentDate,
+                                 ReturnDate = ren.ReturnDate
                              };
 
                 return result.ToList();
