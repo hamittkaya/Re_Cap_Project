@@ -7,11 +7,11 @@ using System.Linq.Expressions;
 using System.Text;
 
 namespace Core.DataAccess.EntityFramewrok
-{
+{ 
     public class EfEntityRepositoryBase<TEntity, TContext> : IEntityRepository<TEntity> where TEntity:class,IEntity,new() where TContext:DbContext,new()
     {
         public void Add(TEntity entity)
-        {
+        {    
             using (TContext context = new TContext())
             {
                 var addedEntity = context.Entry(entity);
