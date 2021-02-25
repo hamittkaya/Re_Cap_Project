@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Contains;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspectd.Autofac.Validation;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
@@ -16,6 +18,7 @@ namespace Business.Concrete
         {
             _customerService = customerDal;
         }
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Add(Customer customer)
         {
             _customerService.Add(customer);
@@ -38,6 +41,7 @@ namespace Business.Concrete
             return new SuccessDataResult<Customer>(_customerService.Get(c => c.Id == customerId));
         }
 
+        [ValidationAspect(typeof(CustomerValidator))]
         public IResult Update(Customer customer)
         {
             _customerService.Update(customer);

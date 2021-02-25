@@ -1,5 +1,7 @@
 ﻿using Business.Abstract;
 using Business.Contains;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspectd.Autofac.Validation;
 using Core.Utilities.Results;
 using DAL.Abstract;
 using Entities.Concrete;
@@ -18,6 +20,7 @@ namespace Business.Concrete
         {
             _rentalDal = rentalDal;
         }
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Add(Rental rental)
         {
             var result = CheckReturnDate(rental.CarId);
@@ -64,7 +67,7 @@ namespace Business.Concrete
         {
             return new SuccessDataResult<List<RentalDetailDto>>(_rentalDal.GetRentalDetail());
         }
-
+        [ValidationAspect(typeof(RentalValidator))]
         public IResult Update(Rental rental)
         {
             _rentalDal.Update(rental);
