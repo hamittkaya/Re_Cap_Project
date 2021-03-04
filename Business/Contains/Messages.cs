@@ -24,5 +24,6 @@ namespace Business.Contains
         public static string RentalUpdated = "Rental car has been updated";
         public static string RentalUpdatedReturnDateError = "Car received";
         public static string RentalUpdatedReturnDate = "This car isn't rented now";
+        internal static string CarImageOfLimitExceted="A car can have up to 5 images";
     }
 }
