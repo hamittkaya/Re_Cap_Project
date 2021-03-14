@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Runtime.Serialization;
 using System.Text;
 
 namespace Business.Contains
@@ -24,6 +25,13 @@ namespace Business.Contains
         public static string RentalUpdated = "Rental car has been updated";
         public static string RentalUpdatedReturnDateError = "Car received";
         public static string RentalUpdatedReturnDate = "This car isn't rented now";
-        internal static string CarImageOfLimitExceted="A car can have up to 5 images";
+        public static string CarImageOfLimitExceted="A car can have up to 5 images";
+        public static string AuthorizationDenied= "Authorization Denied";
+        public static string UserNotFound = "User not found";
+        public static string PasswordError = "Password is incorrect";
+        public static string SuccessfulLogin = "Login to the system is successful";
+        public static string UserAlreadyExists = "This user already exists";
+        public static string UserRegistered = "User successfully registered";
+        public static string AccessTokenCreated = "Access token created";
     }
 }
